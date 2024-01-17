@@ -1,0 +1,12 @@
+@import './variables.scss';
+.feedback{
+    background-color: #2b4162;
+    background-image: linear-gradient(315deg, #2b4162 0%, #12100e 74%);
+}
+.feedbackheading{
+    color: $primary-color;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    padding: 10px 0;
+}
