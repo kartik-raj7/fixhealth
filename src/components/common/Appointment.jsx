@@ -13,6 +13,7 @@ import {
 import { openNotificationWithIcon } from "../../utils/ui/notification";
 import { axiosGet } from "../../services/axiosGet";
 import { useNavigate } from "react-router-dom";
+import { Element } from "react-scroll";
 const { Step } = Steps;
 const { Option } = Select;
 const { TextArea } = Input;
@@ -112,6 +113,7 @@ const Appointment = ({ city }) => {
     }
   };
   return (
+    <Element id="bookappointment">
     <div className={style.appointmentsection}>
       <Row className={style.appointmentheading}>Book Appointment</Row>
       <Form
@@ -292,6 +294,7 @@ const Appointment = ({ city }) => {
         </Form.Item>
       </Form>
     </div>
+    </Element>
   );
 };
 

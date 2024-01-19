@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import style from '../../styles/navbar.module.scss'
 import { Button, Col, Image, Row } from 'antd';
+import { Link } from 'react-scroll';
 const Navbar = () => {
   return (
     <div className={style.navbar}>
@@ -17,7 +18,9 @@ const Navbar = () => {
             </Col>
             </Col>
             <Col xs={5} xl={4} className={style.bookappointmentbuttondiv}>
-                <Button className={style.bookbutton}>Book an Appointment</Button>
+            <Link to="bookappointment" smooth={true} duration={500}>
+  <Button className={style.bookbutton}>Book an Appointment</Button>
+</Link>
             </Col>
         </Row>
     </div>
