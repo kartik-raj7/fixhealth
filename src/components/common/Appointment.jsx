@@ -146,7 +146,7 @@ const Appointment = ({ city }) => {
                 rules={[
                   { required: true, message: "Please enter your phone number" },
                   {
-                    pattern: /^5\d{9}$/,
+                    pattern: /^[6-9]\d{9}$/,
                     message: "Please enter a valid 10-digit phone number",
                   },
                 ]}
