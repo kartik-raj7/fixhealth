@@ -146,12 +146,13 @@ const Appointment = ({ city }) => {
                 rules={[
                   { required: true, message: "Please enter your phone number" },
                   {
-                    pattern: /^[0-9]{10}$/,
+                    pattern: /^5\d{9}$/,
                     message: "Please enter a valid 10-digit phone number",
                   },
                 ]}
               >
                 <Input
+                  maxLength={10}
                   onChange={(e) =>
                     setFormdata({ ...formdata, phonenum: e.target.value })
                   }
