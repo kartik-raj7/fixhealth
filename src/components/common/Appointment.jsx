@@ -10,11 +10,18 @@ import {
   Col,
   Steps,
   Image,
+  Space,
 } from "antd";
 import { openNotificationWithIcon } from "../../utils/ui/notification";
 import { axiosGet } from "../../services/axiosGet";
 import { useNavigate } from "react-router-dom";
+import { GiConfirmed } from "react-icons/gi";
 import { Element } from "react-scroll";
+import { FaCity } from "react-icons/fa";
+import { MdOutlineWork } from "react-icons/md";
+import { FaRegUser } from "react-icons/fa";
+import { FaBabyCarriage } from "react-icons/fa";
+import { FaPhoneAlt } from "react-icons/fa";
 const { Step } = Steps;
 const { Option } = Select;
 const { TextArea } = Input;
@@ -25,7 +32,7 @@ const Appointment = ({ city }) => {
   const [form] = Form.useForm();
   const [options, setOptions] = useState([]);
   const navigate = useNavigate();
-
+  const [appointmentscheduled,setAppointmentScheduled] = useState(false);
   const [formdata, setFormdata] = useState({
     name: "",
     phonenum: "",
@@ -61,6 +68,7 @@ const Appointment = ({ city }) => {
   }, [city]);
   const onFinish = (values) => {
     console.log("Received values:", values);
+    setAppointmentScheduled(true);
     console.log(formdata);
     openNotificationWithIcon("success", "Appointment scheduled successfully");
   };
@@ -130,14 +138,16 @@ const Appointment = ({ city }) => {
       </div>
     </Option>
   ));
-  return (
-    <Element id="bookappointment">
-    <div className={style.appointmentsection}>
+  function ScheduleAppointment(){
+    return (
       <Row style={{height:'100%',width:'80%',display:'flex',justifyContent:'space-evenly',alignItems:'center'}}>
       <Col xs={24} xl={12} className={style.appointmentleftsection}>
       <Row className={style.appointmentheading} >
       <Image src='/doctor.png' preview={false} className={style.bookappointmentimage}/>
-      Book Appointment
+      <Image src='/therapy.png' preview={false} className={style.bookappointmentimage}/>
+      <Image src='/therapy2.png' preview={false} className={style.bookappointmentimage}/>
+      <span>Book an Appointment for <span style={{color:'white',textDecoration:'line-through'}}>1000</span> FREE</span>
+      <Row style={{color:'white',paddingTop:'15px'}}>60+ Expert Physiotherapists for 200+ Conditions</Row>
       </Row>
       <Form
         name="your-form"
@@ -154,13 +164,19 @@ const Appointment = ({ city }) => {
                 name="name"
                 rules={[{ required: true, message: "Please enter your name" }]}
               >
-                <Input
-                  onChange={(e) =>
-                    setFormdata({ ...formdata, name: e.target.value })
-                  }
-                  className={style.inputfield}
-                  placeholder="Enter Name"
-                />
+               <Input
+  onChange={(e) =>
+    setFormdata({ ...formdata, name: e.target.value })
+  }
+  className={style.inputfield}
+  autoComplete={false}
+  placeholder="Enter Name"
+  prefix={
+    <Space>
+      <FaRegUser style={{ color: 'black' }} />
+    </Space>
+  }
+/>
               </Form.Item>
             </Col>
             <Col span={24}>
@@ -180,8 +196,14 @@ const Appointment = ({ city }) => {
                   onChange={(e) =>
                     setFormdata({ ...formdata, phonenum: e.target.value })
                   }
-                  placeholder="Enter Phone Number"
+                  autoComplete={false}
                   className={style.inputfield}
+                  placeholder="86856565656"
+                  prefix={
+                    <Space>
+                      <FaPhoneAlt style={{ color: 'black' }} />
+                    </Space>
+                  }
                 />
               </Form.Item>
             </Col>
@@ -201,12 +223,20 @@ const Appointment = ({ city }) => {
                     message: "Please enter a valid age (non-negative integer)",
                   },
                 ]}
+                
               >
                 <Input
                   onChange={(e) =>
                     setFormdata({ ...formdata, age: e.target.value })
                   }
                   className={style.inputfield}
+                  placeholder="Enter your age"
+                  maxLength={2}
+                  prefix={
+                    <Space>
+                      <FaBabyCarriage style={{ color: 'black' }} />
+                    </Space>
+                  }
                 />
               </Form.Item>
             </Col>
@@ -222,6 +252,12 @@ const Appointment = ({ city }) => {
                     setFormdata({ ...formdata, city: e.target.value })
                   }
                   className={style.inputfield}
+                  placeholder="Enter your City"
+                  prefix={
+                    <Space>
+                      <FaCity style={{ color: 'black' }} />
+                    </Space>
+                  }
                 />
               </Form.Item>
             </Col>
@@ -238,6 +274,12 @@ const Appointment = ({ city }) => {
                     setFormdata({ ...formdata, company: e.target.value })
                   }
                   className={style.inputfield}
+                  placeholder="Enter your Company"
+                  prefix={
+                    <Space>
+                      <MdOutlineWork style={{ color: 'black' }} />
+                    </Space>
+                  }
                 />
               </Form.Item>
             </Col>
@@ -262,6 +304,7 @@ const Appointment = ({ city }) => {
                     setFormdata({ ...formdata, complaints: e.target.value })
                   }
                   className={style.inputfield}
+                  placeholder="Enter your issues here"
                 />
               </Form.Item>
             </Col>
@@ -280,6 +323,7 @@ const Appointment = ({ city }) => {
                     setFormdata({ ...formdata, anyprevexp: e.target.value })
                   }
                   className={style.inputfield}
+                  placeholder="Enter previous experience with physiotherapy if any here"
                 />
               </Form.Item>
             </Col>
@@ -296,7 +340,7 @@ const Appointment = ({ city }) => {
               >
                 <Select
       placeholder="Available Doctors"
-      onSelect={(e) => {console.log(e); setFormdata({ ...formdata, selecteddoc: e })}}
+      onSelect={(e) => {console.log('heere',e); setFormdata({ ...formdata, selecteddoc: e.value })}}
       value={formdata.selecteddoc}
       labelInValue
       className={style.selectdoc}
@@ -334,7 +378,50 @@ const Appointment = ({ city }) => {
       </motion.div>
       </Col>
       </Row>
-    </div>
+    )
+  }
+  function AppointmentScheduled(){
+    console.log(formdata)
+    return(
+  <>
+  <Row className={style.confirmation}>
+    <Col span={24} className={style.confirmationsymbol}><GiConfirmed/></Col>
+    <Col span={24} className={style.confirmationheading}>Your Appointment Request Successfully Sent!!</Col>
+    <Col span={24} className={style.confirmationsubheading}>We have recieved your Appointment Request and will contact you soon</Col>
+    <Row className={style.confirmationbox}>
+      <Col xs={24 }md={11} className={style.appointmentdetailcol}>
+        <Row className={style.appointmentdetailheading}>Client's Name:</Row>
+        <Row className={style.appointmentdetailvalue}>{formdata.name}</Row>
+      </Col>
+      <Col xs={24 }md={11} className={style.appointmentdetailcol}>
+        <Row className={style.appointmentdetailheading}>Client's Age:</Row>
+        <Row className={style.appointmentdetailvalue}>{formdata.age}</Row>
+      </Col>
+      <Col xs={24 }md={11} className={style.appointmentdetailcol}>
+        <Row className={style.appointmentdetailheading}>Client's City:</Row>
+        <Row className={style.appointmentdetailvalue}>{formdata.city}</Row>
+      </Col>
+      <Col xs={24 }md={11} className={style.appointmentdetailcol}>
+        <Row className={style.appointmentdetailheading}>Client's Company:</Row>
+        <Row className={style.appointmentdetailvalue}>{formdata.company}</Row>
+      </Col>
+      <Col xs={24 }md={11}className={style.appointmentdetailcol}>
+        <Row className={style.appointmentdetailheading}>Client's Complaint:</Row>
+        <Row className={style.appointmentdetailvalue}>{formdata.complaints}</Row>
+      </Col>
+      <Col xs={24 }md={11} className={style.appointmentdetailcol}>
+        <Row className={style.appointmentdetailheading}>Doctor Consultant:</Row>
+        <Row className={style.appointmentdetailvalue}>Dr. {formdata.selecteddoc}</Row>
+      </Col>
+    </Row>
+  </Row>
+  </>
+    )
+  }
+  return (
+    <Element id="bookappointment">
+     {appointmentscheduled?<div className={style.appointmentscheduledsection}>{AppointmentScheduled()}</div>:<div className={style.appointmentsection}>{ScheduleAppointment()}</div>}
+    
    
     </Element>
   );

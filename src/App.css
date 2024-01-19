@@ -2,10 +2,6 @@
     display: flex;
     justify-content: center;
 }
-.slick-slide    div{
-     display: flex !important;
-     justify-content: center;
-    }
     .ant-form-item-required,.ant-form-item-label label{
         font-size: 18px !important;
         color:#00AAC1 !important;
@@ -18,10 +14,34 @@
     height:100vh;
 }
 .ant-select-selector{
-    background: linear-gradient(to right, #12100e, #2b4162) !important;
+    background: linear-gradient(to right, rgb(102, 99, 99), #00AAC1) !important;
     color: white !important;
     border: 1px solid aqua !important;
 }
 .ant-select-arrow{
+    color: black !important
+}
+.slick-slider{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center;
+}
+.slick-list{
+    width: 80% !important;
+}
+@media (max-width:834px) {
+    .slick-list{
+        width: 100% !important;
+    }
+}
+.slick-dots li button:before {
     color:#00AAC1 !important;
+   
+}
+.slick-dots{
+    padding-bottom: 30px !important;
+}
+.slick-slide{
+    display: flex !important;
+    justify-content: center !important;
 }

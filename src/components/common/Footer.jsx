@@ -16,7 +16,7 @@ const Footer = () => {
                 <Col xs={24} md={8}>
                   <Space direction="vertical">
                     <Row align="middle" gutter={8}>
-                      <Image src="https://ik.imagekit.io/tcfp7i31d/logo_with_yp_black_urUeyjKwY.svg" height={100} width={150} />
+                      <Image src="https://ik.imagekit.io/tcfp7i31d/logo_with_yp_black_urUeyjKwY.svg" height={100} width={150} preview={false}/>
                     </Row>
                     <Typography.Text className={style.text}>
                       Elevating your health with Fix Health

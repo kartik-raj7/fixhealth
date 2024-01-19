@@ -1,10 +1,19 @@
 @import './variables.scss';
 .appointmentsection{
-    background-image: linear-gradient(315deg,  #12100e 0%, #2b4162 74%);
+    background-image: linear-gradient(255deg,  #12100e 0%, #04274e 94%);
     display: flex;
     align-items: center;
     flex-direction: column;
     min-height: 100vh;
+    padding: 10px 0;
+    justify-content: center;
+}
+.appointmentscheduledsection{
+  background-image: linear-gradient(255deg,  #12100e 0%, #04274e 94%);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 70vh;
     padding: 10px 0;
     justify-content: center;
 }
@@ -20,11 +29,13 @@
     font-size: 35px;
     color: $primary-color;
     font-weight: 500;
-    padding-bottom: 50px;
-    margin-top: 50px;
+    padding-bottom: 20px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    width: 80%;
 }
 .bookappointmentimage{
   height: 50px !important;
@@ -43,7 +54,7 @@
     color: $primary-color !important;
   }
   .submitbutton:hover{
-    background-color: $primary-color;
+    background-color: $primary-color !important;
     color: white !important;
   }
   .nextbtn{
@@ -62,26 +73,16 @@
     align-items: center;
     width: 100%;
   }
-  @media(max-width:834px){
-    .appointmentsection{
-        height: 50vh;
-    }
-  }
-  @media (max-width:576px){
-    .appointmentsection{
-        height: 60vh;
-    }
-  }
+  
   .inputfield{
-    background: linear-gradient(to right, #12100e, #2b4162) !important;
+    // background: linear-gradient(to right, #12100e, #2b4162) !important;
     border: none; 
     padding: 10px;
-    color: #fff !important;
+    color: black !important;
     border: 1px solid $primary-color !important;
   }
   .selectdoc{
     height: fit-content !important;
-    background: linear-gradient(to right, #12100e, #2b4162) !important;
   }
   .appointmentformdiv{
     width: 60%;
@@ -92,7 +93,7 @@
     justify-content: center;
     align-items: center;
     /* From https://css.glass */
-background: rgba(0, 0, 0, 0.1);
+background: rgba(255, 255, 255, 0.1);
 border-radius: 16px;
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
 backdrop-filter: blur(5px);
@@ -125,3 +126,82 @@ height: 80%;
     width: 90%;
    }
   }
+  .confirmationsymbol{
+    color:$primary-color;
+    font-size: 55px;
+    display: flex;
+    justify-content: center;
+
+  }
+  .confirmationheading{
+    color:white;
+    font-size: 30px;
+    padding: 15px 0 5px 0;
+    text-align: center;
+  }
+  .confirmationsubheading{
+    color:white;
+    font-size: 20px;
+    padding: 5px 0;
+    text-align: center;
+
+  }
+  .confirmationbox {
+    border: 1px dotted white; 
+    display: flex;
+    justify-content: space-evenly;
+    padding: 15px;
+    margin: 20px 0;
+    background: rgba(255, 255, 255, 0.1);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 170, 193, 0.2);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+height: 80%;
+width: 70%;
+  }
+  .confirmation{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .appointmentdetailcol{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .appointmentdetailheading{
+   color: $primary-color;
+   font-weight: bold;
+   font-size: 18px;
+  }
+  .appointmentdetailvalue{
+    color: white;
+    font-size: 15px;
+    padding: 5px 0;
+   }
+   @media (max-width:834px){
+    .confirmation{
+      flex-direction: row;
+    }
+    .appointmentsection{
+      height: 50vh;
+  }
+   }
+   @media (max-width:576px){
+    .appointmentdetailcol{
+      padding: 5px
+    }
+    .appointmentsection{
+      height: 60vh;
+  }
+  .confirmationheading{
+    font-size: 22px;
+  }
+  .confirmationsubheading{
+    font-size: 16px;
+    padding: 0 15px;
+  }
+   }
