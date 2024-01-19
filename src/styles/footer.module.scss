@@ -33,6 +33,7 @@
     color: white;
     text-decoration: none;
     padding: 2px;
+    font-size: 17px;
     display: flex;
     @media(max-width:$mobile-screen){
       padding-left: 0;
@@ -58,6 +59,7 @@
     border-radius: 50%;
     background-color: white;
     color: #153240;
+    padding: 3px;
   }
   
   .socials {
@@ -78,6 +80,7 @@
   }
   .footernavlinks{
     color: white;
+    font-size: 15px;
   }
   // .mail{
   //   display: flex;

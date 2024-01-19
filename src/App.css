@@ -3,8 +3,9 @@
     justify-content: center;
 }
     .ant-form-item-required,.ant-form-item-label label{
-        font-size: 18px !important;
+        font-size: 16px !important;
         color:#00AAC1 !important;
+        font-weight: bold;
     }
 .loaderstyle{
     display:flex;
@@ -44,4 +45,8 @@
 .slick-slide{
     display: flex !important;
     justify-content: center !important;
+}
+.ant-input-group-addon{
+    background-color: white !important;
+    border-right: 2px solid #00AAC1 !important;
 }

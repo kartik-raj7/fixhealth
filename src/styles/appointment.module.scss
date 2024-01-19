@@ -36,6 +36,7 @@
     align-items: center;
     text-align: center;
     width: 80%;
+    
 }
 .bookappointmentimage{
   height: 50px !important;
@@ -58,14 +59,20 @@
     color: white !important;
   }
   .nextbtn{
-    padding: 14px;
     width: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: $primary-color;
     margin-top: 30px;
-    border: 2px solid white;
+    // border: 2px solid white;
+    font-weight: bold;
+    padding: 18px 14px;
+    border-radius: 17px;
+  }
+  .nextbtn:hover{
+    background-color: white !important;
+    color: $primary-color !important;
   }
   .actionbtndiv{
     display: flex;
@@ -77,9 +84,9 @@
   .inputfield{
     // background: linear-gradient(to right, #12100e, #2b4162) !important;
     border: none; 
-    padding: 10px;
+    
     color: black !important;
-    border: 1px solid $primary-color !important;
+    height: 30px  !important;
   }
   .selectdoc{
     height: fit-content !important;
@@ -92,15 +99,51 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* From https://css.glass */
-background: rgba(255, 255, 255, 0.1);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
-backdrop-filter: blur(5px);
--webkit-backdrop-filter: blur(5px);
-border: 2px solid $primary-color;
+     background: #032146;
+// border-radius: 16px;
+// box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+// backdrop-filter: blur(5px);
+// -webkit-backdrop-filter: blur(5px);
+// border: 2px solid $primary-color;
 height: 80%;
+overflow: hidden; 
+z-index: 0;
+border-radius: 10px;
   }
+.appointmentleftsection:before, .animated-border-box-glow:before {
+  content: '';
+  z-index: -2;
+  text-align: center;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(0deg);
+  position: absolute;
+	width: 99999px;
+	height: 99999px;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	background-image: conic-gradient(rgba(255, 255, 255, 0.6), #00aac1, rgba(0,0,0,0) 65%);
+	animation: rotate 3s linear infinite;
+}
+
+.appointmentleftsection:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	left: 5px;
+	top: 5px;
+	width: calc(100% - 10px);
+	height: calc(100% - 10px);
+	background: hwb(212 11% 59%);
+	border-radius: 7px;
+}
+
+@keyframes rotate {
+	100% {
+		transform: translate(-50%, -50%) rotate(1turn);
+	}
+}
+
   .appointmentrightsection{
     display: flex;
     justify-content: center;
@@ -115,7 +158,7 @@ height: 80%;
     padding-bottom: 25px;
    }
    .appointmentheading{
-    font-size: 25px;
+    font-size: 22px;
     padding-bottom: 15px;
     margin-top: 15px;
    }
@@ -152,7 +195,7 @@ height: 80%;
     justify-content: space-evenly;
     padding: 15px;
     margin: 20px 0;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0,0, 0.1);
 border-radius: 16px;
 box-shadow: 0 4px 30px rgba(0, 170, 193, 0.2);
 backdrop-filter: blur(5px);
@@ -174,12 +217,11 @@ width: 70%;
   }
   .appointmentdetailheading{
    color: $primary-color;
-   font-weight: bold;
-   font-size: 18px;
+   font-size: 20px;
   }
   .appointmentdetailvalue{
     color: white;
-    font-size: 15px;
+    font-size: 16px;
     padding: 5px 0;
    }
    @media (max-width:834px){

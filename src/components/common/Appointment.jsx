@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import style from "../../styles/appointment.module.scss";
 import {
   Form,
@@ -12,6 +12,8 @@ import {
   Image,
   Space,
 } from "antd";
+import NET from 'vanta/dist/vanta.net.min'; // Import Vanta.NET library
+import * as THREE from 'three'; // Import Three.js library
 import { openNotificationWithIcon } from "../../utils/ui/notification";
 import { axiosGet } from "../../services/axiosGet";
 import { useNavigate } from "react-router-dom";
@@ -62,6 +64,27 @@ const Appointment = ({ city }) => {
       console.error("Error:", error);
     }
   };
+  const vantaRef = useRef(null); 
+  useEffect(() => {
+    const vantaEffect = NET({
+      el: '#appointment', 
+      THREE: THREE, 
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      showDots: false,
+    });
+    vantaRef.current = vantaEffect;
+    return () => {
+      if (vantaRef.current) {
+        vantaRef.current.destroy();
+      }
+    };
+  }, []);
   useEffect(() => {
     fetchData();
     setFormdata({ ...formdata, city: city });
@@ -89,6 +112,10 @@ const Appointment = ({ city }) => {
             "error",
             "Please fill all the details properly"
           );
+          // form.setFields({
+          //   name: 'name',
+          //   errors: ['Please enter your name'],
+          // });
           return;
         }
       }
@@ -146,8 +173,8 @@ const Appointment = ({ city }) => {
       <Image src='/doctor.png' preview={false} className={style.bookappointmentimage}/>
       <Image src='/therapy.png' preview={false} className={style.bookappointmentimage}/>
       <Image src='/therapy2.png' preview={false} className={style.bookappointmentimage}/>
-      <span>Book an Appointment for <span style={{color:'white',textDecoration:'line-through'}}>1000</span> FREE</span>
-      <Row style={{color:'white',paddingTop:'15px'}}>60+ Expert Physiotherapists for 200+ Conditions</Row>
+      <span>Book an Appointment for <span style={{color:'white',textDecoration:'line-through'}}>₹1000</span> FREE</span>
+      <Row style={{color:'white',paddingTop:'15px'}}><span style={{color:'#00aac1',paddingRight:'5px',fontWeight:'bold'}}>60+ </span>  Expert Physiotherapists for <span style={{color:'#00aac1',padding:'0 5px',fontWeight:'bold'}}>200+</span> Conditions</Row>
       </Row>
       <Form
         name="your-form"
@@ -171,7 +198,7 @@ const Appointment = ({ city }) => {
   className={style.inputfield}
   autoComplete={false}
   placeholder="Enter Name"
-  prefix={
+  addonBefore={
     <Space>
       <FaRegUser style={{ color: 'black' }} />
     </Space>
@@ -198,8 +225,8 @@ const Appointment = ({ city }) => {
                   }
                   autoComplete={false}
                   className={style.inputfield}
-                  placeholder="86856565656"
-                  prefix={
+                  placeholder="Enter Phone Number"
+                  addonBefore={
                     <Space>
                       <FaPhoneAlt style={{ color: 'black' }} />
                     </Space>
@@ -232,7 +259,7 @@ const Appointment = ({ city }) => {
                   className={style.inputfield}
                   placeholder="Enter your age"
                   maxLength={2}
-                  prefix={
+                  addonBefore={
                     <Space>
                       <FaBabyCarriage style={{ color: 'black' }} />
                     </Space>
@@ -253,7 +280,7 @@ const Appointment = ({ city }) => {
                   }
                   className={style.inputfield}
                   placeholder="Enter your City"
-                  prefix={
+                  addonBefore={
                     <Space>
                       <FaCity style={{ color: 'black' }} />
                     </Space>
@@ -275,7 +302,7 @@ const Appointment = ({ city }) => {
                   }
                   className={style.inputfield}
                   placeholder="Enter your Company"
-                  prefix={
+                  addonBefore={
                     <Space>
                       <MdOutlineWork style={{ color: 'black' }} />
                     </Space>
