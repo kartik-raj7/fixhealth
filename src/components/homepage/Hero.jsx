@@ -5,13 +5,13 @@ const Hero = () => {
   return (
     <div className={style.hero}>
     <Row className={style.herorow}>
-        <Col span={12} className={style.heroleftsection}>
+        <Col xs={24}  lg={12} className={style.heroleftsection}>
             <Row className={style.heroheading}>Elevate Your Health with FixHealth</Row>
             <Row className={style.herosubheading}>
             Experience a Comprehensive Approach to Health at FixHealth, where our dedicated team of professionals combines expert physiotherapy and personalized doctor consultations to ensure your journey to well-being is seamless and effective. Your path to optimal health begins with FixHealth – because your wellness matters.
             </Row>
         </Col>
-        <Col span={12} className={style.herorightsection}>
+        <Col xs={24}  lg={12} className={style.herorightsection}>
         <Image src='/min.png' preview={false}/>
         </Col>
     </Row>

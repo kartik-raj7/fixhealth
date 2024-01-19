@@ -1,5 +1,6 @@
+@import './variables.scss';
 .feedbackcard{
-    margin: 40px;
+    margin: 40px 10px;
     height: 400px;
     width: 350px;
 background: rgba(255, 255, 255, 0.2);
@@ -8,8 +9,50 @@ box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(5px);
 -webkit-backdrop-filter: blur(5px);
 border: 1px solid rgba(255, 255, 255, 0.3);
+display: flex;
+align-items: center;
+flex-direction: column;
+border: 1px solid $primary-color;
 }
 .feedbackcardwrapper{
     display: flex;
     justify-content: center;
+}
+.feedbackcustname{
+   font-size: 22px;
+   color: $primary-color;
+   padding: 10px 0 0 0;
+}
+.feedbackcustoccupation{
+    font-size: 14px;
+    color: white;
+    padding-bottom: 10px;
+}
+.feedbackcustimage{
+    height: 150px;
+    width: 150px !important;
+    border-radius: 50% !important;
+    margin-top: 25px;
+}
+.custfeedback{
+  font-size: 16px;
+  padding: 5px 10px;
+  color: white;
+}
+@media (max-width:834px){
+    .feedbackcard{
+        width: 340px !important;
+        margin: 40px 0;
+    }
+}
+@media (max-width:576px){
+    .feedbackcard{
+        width: 150px;
+        height: 290px;
+        margin: 40px 0;
+    }
+    .feedbackcustimage{
+        width: 100px !important;
+        height: 100px ;
+    }
 }

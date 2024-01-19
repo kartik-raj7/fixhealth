@@ -2,12 +2,13 @@
 .appointmentsection{
     background-image: linear-gradient(315deg,  #12100e 0%, #2b4162 74%);
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: max-content;
 }
 .appointmentform{
     width: 80%;
+   
 }
 .formrows{
     display: flex;
@@ -18,6 +19,7 @@
     color: $primary-color;
     font-weight: 500;
     padding-bottom: 50px;
+    margin-top: 50px;
 }
 .submitbutton{
     background-color: white;
@@ -34,4 +36,28 @@
     background-color: $primary-color;
     color: white !important;
   }
-  
+  .nextbtn{
+    padding: 14px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $primary-color;
+    margin-top: 30px;
+  }
+  .actionbtndiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  @media(max-width:834px){
+    .appointmentsection{
+        height: 50vh;
+    }
+  }
+  @media (max-width:576px){
+    .appointmentsection{
+        height: 60vh;
+    }
+  }

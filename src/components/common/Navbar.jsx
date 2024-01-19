@@ -5,18 +5,18 @@ const Navbar = () => {
   return (
     <div className={style.navbar}>
         <Row className={style.navbarrow}>
-            <Col span={4}>
+            <Col xs={8} xl={4}>
              <Image src='https://ik.imagekit.io/tcfp7i31d/logo_with_yp_black_urUeyjKwY.svg' className={style.logoimage}/>
             </Col>
-            <Col span={16} className={style.navbarrowoptions}>
+            <Col xs={8} xl={16} className={style.navbarrowoptions}>
             <Col>
-             first 
+             
             </Col>
             <Col>
-            second
+            
             </Col>
             </Col>
-            <Col span={4} className={style.bookappointmentbuttondiv}>
+            <Col xs={5} xl={4} className={style.bookappointmentbuttondiv}>
                 <Button className={style.bookbutton}>Book an Appointment</Button>
             </Col>
         </Row>
