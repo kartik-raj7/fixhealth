@@ -38,7 +38,8 @@ const Appointment = ({ city }) => {
     const url = "https://mocki.io/v1/5341dc57-c19f-4101-8817-a94161138aaf";
     try {
       const response = await axiosGet(url);
-
+      city = city.toLowerCase();
+      console.log(city);
       if (response.status) {
         if (response.location[city]) {
           setOptions(response.location[city]);
@@ -63,7 +64,7 @@ const Appointment = ({ city }) => {
   };
   const onError = (errorInfo) => {
     console.log("Validation failed:", errorInfo);
-    openNotificationWithIcon("error", "Please fill all the details properly");
+    // openNotificationWithIcon("error", "Please fill all the details properly");
   };
 
   const nextStep = async () => {
