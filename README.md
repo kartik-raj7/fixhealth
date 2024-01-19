@@ -1,8 +1,9 @@
-# React + Vite
+<h1 align="center">Fix Health</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div style="overflow: auto" align="center" >
+  
+<img align="center" src="/images/hero.png" alt="dashboard"  width="850" height="450"/>
 
-Currently, two official plugins are available:
+<img align="center" src="/images/appointment.png" alt="dashboard"  width="850" height="450"/>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<img align="center" src="/images/reviews.png" alt="dashboard"  width="850" height="450"/>
