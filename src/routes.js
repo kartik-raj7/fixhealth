@@ -12,6 +12,12 @@ const routes = [
     exact: true,
     preload: true, 
   },
+  {
+    path: '*',
+    component: lazy(() => import('./pages/Errorpage')),
+    exact: true,
+    preload: true, 
+  },
 ];
 
 export default routes;
