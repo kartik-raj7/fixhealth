@@ -11,18 +11,31 @@
 }
 .heroheading{
   color: $primary-color;
-  font-size: 34px;
+  font-size: 58px;
   font-weight: bold;
   padding: 15px 0;
+  
 }
 .herosubheading{
   font-size: 20px;
   color: white;
   line-height: 1.5;
 }
+.healthtext {
+    color: white;
+  }
+  .fixtext{
+    color:$primary-color;
+    
+  }
+  .fixhealthtext{
+    font-weight: bold;
+  }
 .hero{
- background-color: #2b4162;
-    background-image: linear-gradient(315deg, #2b4162 0%, #12100e 74%);
+    background-color: #2b4162;
+    background-image: url('/hero.jpg');
+    background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: center;
     height: 100vh;

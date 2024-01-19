@@ -9,6 +9,7 @@ import {
   Row,
   Col,
   Steps,
+  Image,
 } from "antd";
 import { openNotificationWithIcon } from "../../utils/ui/notification";
 import { axiosGet } from "../../services/axiosGet";
@@ -17,6 +18,7 @@ import { Element } from "react-scroll";
 const { Step } = Steps;
 const { Option } = Select;
 const { TextArea } = Input;
+import { motion } from 'framer-motion';
 
 const Appointment = ({ city }) => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -35,7 +37,7 @@ const Appointment = ({ city }) => {
     selecteddoc: "",
   });
   const fetchData = async () => {
-    const url = "https://mocki.io/v1/5341dc57-c19f-4101-8817-a94161138aaf";
+    const url = "https://mocki.io/v1/646db521-b10a-4ba4-a62e-54df95b3f695";
     try {
       const response = await axiosGet(url);
       city = city.toLowerCase();
@@ -66,7 +68,7 @@ const Appointment = ({ city }) => {
     console.log("Validation failed:", errorInfo);
     // openNotificationWithIcon("error", "Please fill all the details properly");
   };
-
+  console.log(formdata)
   const nextStep = async () => {
     console.log(formdata);
     try {
@@ -113,16 +115,36 @@ const Appointment = ({ city }) => {
       console.log("Validation failed:", errorInfo);
     }
   };
+  const doctorsdetails = options.map((doctor, index) => (
+    <Option key={index} value={doctor.doctor_name} title={doctor.doctor_name}>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <img src={doctor.image_url} alt={`${doctor.doctor_name}'s Image`} style={{ width: '40px', height: '40px', borderRadius: '50%', marginRight: '10px' }} />
+        <div>
+          <span style={{ fontSize: '18px', fontWeight: 'bold' }}>Dr. {doctor.doctor_name}</span>
+          <div style={{ fontSize: '14px' }}>
+            <span>{doctor.speciality}</span>
+            <span style={{ marginLeft: '10px' }}>Practicing Since: {doctor.practice_since}</span>
+          </div>
+          <div style={{ fontSize: '14px' }}>Average Rating: {doctor.average_rating}</div>
+        </div>
+      </div>
+    </Option>
+  ));
   return (
     <Element id="bookappointment">
     <div className={style.appointmentsection}>
-      <Row className={style.appointmentheading}>Book Appointment</Row>
+      <Row style={{height:'100%',width:'80%',display:'flex',justifyContent:'space-evenly',alignItems:'center'}}>
+      <Col xs={24} xl={12} className={style.appointmentleftsection}>
+      <Row className={style.appointmentheading} >
+      <Image src='/doctor.png' preview={false} className={style.bookappointmentimage}/>
+      Book Appointment
+      </Row>
       <Form
         name="your-form"
         onFinish={onFinish}
         onFinishFailed={onError}
         layout="vertical"
-        style={{ width: "60%" }}
+        className={style.appointmentformdiv}
       >
         {currentStep === 0 && (
           <Row className={style.formrows}>
@@ -136,12 +158,14 @@ const Appointment = ({ city }) => {
                   onChange={(e) =>
                     setFormdata({ ...formdata, name: e.target.value })
                   }
+                  className={style.inputfield}
+                  placeholder="Enter Name"
                 />
               </Form.Item>
             </Col>
             <Col span={24}>
               <Form.Item
-                label="Phone number"
+                label="Phone"
                 name="phoneNumber"
                 rules={[
                   { required: true, message: "Please enter your phone number" },
@@ -156,6 +180,8 @@ const Appointment = ({ city }) => {
                   onChange={(e) =>
                     setFormdata({ ...formdata, phonenum: e.target.value })
                   }
+                  placeholder="Enter Phone Number"
+                  className={style.inputfield}
                 />
               </Form.Item>
             </Col>
@@ -180,6 +206,7 @@ const Appointment = ({ city }) => {
                   onChange={(e) =>
                     setFormdata({ ...formdata, age: e.target.value })
                   }
+                  className={style.inputfield}
                 />
               </Form.Item>
             </Col>
@@ -194,6 +221,7 @@ const Appointment = ({ city }) => {
                   onChange={(e) =>
                     setFormdata({ ...formdata, city: e.target.value })
                   }
+                  className={style.inputfield}
                 />
               </Form.Item>
             </Col>
@@ -209,6 +237,7 @@ const Appointment = ({ city }) => {
                   onChange={(e) =>
                     setFormdata({ ...formdata, company: e.target.value })
                   }
+                  className={style.inputfield}
                 />
               </Form.Item>
             </Col>
@@ -232,6 +261,7 @@ const Appointment = ({ city }) => {
                   onChange={(e) =>
                     setFormdata({ ...formdata, complaints: e.target.value })
                   }
+                  className={style.inputfield}
                 />
               </Form.Item>
             </Col>
@@ -249,6 +279,7 @@ const Appointment = ({ city }) => {
                   onChange={(e) =>
                     setFormdata({ ...formdata, anyprevexp: e.target.value })
                   }
+                  className={style.inputfield}
                 />
               </Form.Item>
             </Col>
@@ -264,15 +295,14 @@ const Appointment = ({ city }) => {
                 rules={[{ required: true, message: "Please select doctor" }]}
               >
                 <Select
-                  placeholder="Available Doctors"
-                  onSelect={(e) => setFormdata({ ...formdata, selecteddoc: e })}
-                >
-                  {options.map((doctor, index) => (
-                    <Option key={index} value={doctor.doctor_name}>
-                      {doctor.doctor_name}
-                    </Option>
-                  ))}
-                </Select>
+      placeholder="Available Doctors"
+      onSelect={(e) => {console.log(e); setFormdata({ ...formdata, selecteddoc: e })}}
+      value={formdata.selecteddoc}
+      labelInValue
+      className={style.selectdoc}
+    >
+      {doctorsdetails}
+    </Select>
               </Form.Item>
             </Col>
           </Row>
@@ -295,7 +325,17 @@ const Appointment = ({ city }) => {
           )}
         </Form.Item>
       </Form>
+      </Col>
+      <Col xs={24} xl={12} className={style.appointmentrightsection}>
+      <motion.div
+      animate={{ y: [-10, 10, -10], transition: { duration: 2, repeat: Infinity } }}
+    >
+      <Image src='/physio.png' preview={false}/>
+      </motion.div>
+      </Col>
+      </Row>
     </div>
+   
     </Element>
   );
 };

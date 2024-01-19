@@ -9,7 +9,7 @@ const Feedbacksection = () => {
   return (
     <div className={style.feedback}>
         <Row className={style.feedbackheading}>Patient Recovery Stories</Row>
-        <Row className={style.feedbacksubheading}>Don't just take our word for it</Row>
+        <Row className={style.feedbacksubheading}>Don't just take our word for it......</Row>
         <Carousel autoplay slidesToShow={slidesToShow} className={style.feedbackcarousel}>
            {feedbackdata.map((data,index)=>(
              <Feedbackcards feedback={data} key={index}/>

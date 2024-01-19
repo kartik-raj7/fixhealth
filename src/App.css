@@ -17,3 +17,11 @@
     color:black;
     height:100vh;
 }
+.ant-select-selector{
+    background: linear-gradient(to right, #12100e, #2b4162) !important;
+    color: white !important;
+    border: 1px solid aqua !important;
+}
+.ant-select-arrow{
+    color:#00AAC1 !important;
+}
