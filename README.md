@@ -1,9 +1,25 @@
-<h1 align="center">Fix Health</h1>
+# Fix Health
 
-<div style="overflow: auto" align="center" >
-  
-<img align="center" src="/images/hero.png" alt="dashboard"  width="850" height="450"/>
+Fix Health is a user-friendly web application designed to facilitate the seamless booking of appointments with physiotherapists. Whether you're seeking relief from an injury, managing a chronic condition, or simply prioritizing your well-being, Fix Health connects users with qualified physiotherapists in a convenient and efficient manner.
 
-<img align="center" src="/images/appointment.png" alt="dashboard"  width="850" height="450"/>
+## Screenshots
 
-<img align="center" src="/images/reviews.png" alt="dashboard"  width="850" height="450"/>
+### Dashboard
+![Dashboard](/images/hero2.png)
+
+### Appointment Management
+![Appointment Management](/images/Appointment2.png)
+
+### Reviews
+![Reviews](/images/reviews2.png)
+
+### Scheduled Appointments
+![Scheduled Appointments](/images/appointmentscheduled.png)
+
+## Getting Started
+
+### Installation
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/yourusername/FixHealth.git
